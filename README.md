@@ -21,7 +21,7 @@ Here're some of the project's best features:
 docker-compose up 
 ```
 
-<p><strong>Sem docker</strong></p>
+<p><strong>Ou, se não deseja utilizar docker</strong></p>
 <p>1. Instalar uma instancia do mysql, com os seguintes dados</p>
 
 ```
@@ -45,7 +45,7 @@ go run main.go
 <h2>Endereço para acesso local:</h2>
 
 ```
-http://localhost:3000/login
+http://localhost:3000
 ```
     
 <h2>💻 Construido com</h2>
