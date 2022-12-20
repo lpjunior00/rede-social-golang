@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Cadastro de usuário</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='assets/css/login.css'>
+</head>
+<body>
+  <div class="container-login">
+        <div>
+            <form class="devbook-form" id="form-createUser">
+                <span>Criar uma conta:</span>
+                <div>
+                    <input type="text" name="name" id="name" placeholder="Digite o seu nome" required="required">
+                </div>
+                <div>
+                    <input type="text" name="nickname" id="nickname" placeholder="Digite o seu nickname" required="required">
+                </div>
+                <div>
+                    <input type="text" name="email" id="email" placeholder="Digite o seu email" required="required">
+                </div>
+                <div>
+                    <input type="password" name="password" id="password" placeholder="Digite uma senha válida" required="required">
+                </div>
+                <div>
+                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Digite a senha novamente" required="required">
+                </div>
+               <button type="submit" class="btn-devbook">Salvar</button>
+               <a href="/login">Já possuo um usuário. Quero me logar</a>
+            </form>
+        </div>
+  </div>
+    {{ template "scripts" }}
+    <script src="/assets/js/createUser.js"></script>
+</body>
+</html>

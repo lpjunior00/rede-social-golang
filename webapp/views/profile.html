@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Go Lang - Projeto para estudos</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="/assets/css/ext/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+
+  {{ template "menu"}}
+
+  <div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Perfil do usuário</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        {{ .Name }} - {{ .Nickname }} - Membro desde {{ .CreationDate.Format "02/01/2006" }}
+                    </h6>
+                    <p class="card-text">
+                        <a href="#" data-toggle="modal" data-target="#modal-followers">Seguidores: {{ len .Followers}} </a>
+                    </p>
+                    <p class="card-text">
+                        <a href="#" data-toggle="modal" data-target="#modal-following">Seguindo: {{ len .Following}} </a>
+                    </p>
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="/edit-user" class="card-link">
+                                <button class="btn btn-info">Atualizar Usuário</button>
+                            </a>
+                            <a href="/change-password" class="card-link">
+                                <button class="btn btn-info">Atualizar Senha</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Minhas Publicações </h5>
+                <p class="card-text">
+                   {{ range .Posts }}
+                    {{ template "post-with-permissions" . }}
+                   {{ else }}
+                    <p class="text-muted text-center">
+                        Nenhuma publicação por enquanto.
+                    </p>
+                   {{ end }}
+                </p>
+            </div>
+        </div>
+    </div>
+  </div>
+  <p>
+    <a href="#" id="btn-delete-account" class="card-link">
+        <button class="btn btn-info">Excluir conta permanentemente</button>
+    </a>
+  </p>
+</div>
+
+  {{ template "footer"}}
+  {{ template "scripts"}}
+  {{ template "modal-followers" . }}
+  {{ template "modal-following" . }}
+  <script src="/assets/js/post.js"></script>
+  <script src="/assets/js/user.js"></script>
+
+</body>
+
+</html>

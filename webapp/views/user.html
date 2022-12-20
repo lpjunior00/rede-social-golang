@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Go Lang - Projeto para estudos</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="/assets/css/ext/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+
+  {{ template "menu"}}
+
+  <!-- inicio uma variavel-->
+  {{ $FollowedByLoggedUser := false }}
+  {{ range .User.Followers }}
+    {{ if (eq .Id $.LoggedUserId) }}
+        {{ $FollowedByLoggedUser = true}}
+    {{ end }}
+  {{ end }}
+
+  <div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Perfil do usuário</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        {{ .User.Name }} - {{ .User.Nickname }} - Membro desde {{ .User.CreationDate.Format "02/01/2006" }}
+                    </h6>
+                    <p class="card-text">
+                        <a href="#" data-toggle="modal" data-target="#modal-followers">Seguidores: {{ len .User.Followers}} </a>
+                    </p>
+                    <p class="card-text">
+                        <a href="#" data-toggle="modal" data-target="#modal-following">Seguindo: {{ len .User.Following}} </a>
+                    </p>
+                    <a href="#" class="card-link">
+                        {{ if $FollowedByLoggedUser }}
+                            <button id="btn-unfollow" class="btn btn-info" data-user-id="{{ .User.Id }}">Para de Seguir</button>
+                        {{ else }}
+                            <button id="btn-follow" class="btn btn-info" data-user-id="{{ .User.Id }}">Seguir</button>
+                        {{ end }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Publicações do usuário {{ .User.Name }}</h5>
+                    <p class="card-text">
+                       {{ range .User.Posts }}
+                        {{ template "post-without-permissions" . }}
+                       {{ else }}
+                        <p class="text-muted text-center">
+                            Nenhuma publicação por enquanto.
+                        </p>
+                       {{ end }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  {{ template "footer"}}
+  {{ template "scripts"}}
+  {{ template "modal-followers" .User }}
+  {{ template "modal-following" .User }}
+  <script src="/assets/js/post.js"></script>
+  <script src="/assets/js/user.js"></script>
+
+</body>
+
+</html>

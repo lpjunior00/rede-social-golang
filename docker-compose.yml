@@ -1,0 +1,51 @@
+version: '1'
+
+# Define services
+services:
+
+  # Api Service
+  api:
+    build:
+      context: /api/.
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    depends_on: 
+      - mysql 
+    networks: 
+      - api
+
+  # webapp Service
+  webapp:
+    build:
+      context: /webapp/.
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    depends_on: 
+      - mysql 
+    networks: 
+      - api
+
+  #mysql
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'devbook'
+      MYSQL_USER: 'golang'
+      MYSQL_PASSWORD: 'golang'
+      MYSQL_ROOT_PASSWORD: 'golang'
+    ports:
+      - '3310:3310'
+    expose:
+      - '3310'
+    volumes:
+      - my-db:/var/lib/mysql
+volumes:
+  my-db:
+
+networks:
+  api:  

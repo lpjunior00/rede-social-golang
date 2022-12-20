@@ -1,0 +1,40 @@
+{{ define "likes" }}
+  <i class="fas fa-heart like-post"></i>
+  <span>{{ .Likes }} </span>
+{{ end }}
+
+{{ define "edit" }}
+  <a href="/posts/{{ .Id }}/edit"><i class="fas fa-edit" style="text-decoration: none";></i></a>
+{{ end }}
+
+{{ define "delete" }}
+  <i class="fas fa-trash text-danger btn-delete" id="btn-delete" data-post-id="{{ .Id }}" style="cursor: pointer"></i>
+{{ end }}
+
+{{ define "post-header" }}
+  <h1 class="display-4">{{ .Title }}</h1>
+  <p class="lead">{{ .Content }}</p>
+  <!-- tem que usar especificamente esse formato. Format "02/01/2006" - 02 referencia o dia, 01 sempre o mês e 2006 sempre o ano-->
+  <a href="/users/{{ .AuthorId }}">{{ .AuthorNickname }} - Criado em: {{ .CreationDate.Format "02/01/2006"}} </a>
+  <hr class="my-4">
+{{ end }}
+
+{{ define "post-with-permissions" }}
+<div class="jumbotron" data-post-id="{{ .Id }}">
+  {{ template "post-header" . }}
+  <p>
+      {{ template "likes" . }}
+      {{ template "edit" . }}
+      {{ template "delete" . }}
+  </p>
+</div>
+{{ end }}
+
+{{ define "post-without-permissions" }}
+<div class="jumbotron" data-post-id="{{ .Id }}">
+  {{ template "post-header" . }}
+  <p>
+      {{ template "likes" . }}
+  </p>
+</div>
+{{ end }}

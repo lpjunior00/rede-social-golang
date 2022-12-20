@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='assets/css/login.css'>
+</head>
+<body>
+  <div class="container-login">
+        <div>
+            <form class="devbook-form" id="form-login">
+                <span>Seja bem vindo a rede social</span>
+                <div>
+                    <input type="text" name="email" id="email" placeholder="Digite o email de acesso" required="required">
+                </div>
+                <div>
+                    <input type="password" name="password" id="password" placeholder="Digite a senha de acesso" required="required">
+                </div>
+               <button type="submit" class="btn-devbook">Login</button>
+               <a href="/create-user">Cadastrar um novo usuário</a>
+            </form>
+        </div>
+  </div>
+  {{ template "scripts" }}
+  <script src="/assets/js/login.js"></script>
+</body>
+</html>
