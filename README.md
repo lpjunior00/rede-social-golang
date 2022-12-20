@@ -7,10 +7,10 @@
 
 Here're some of the project's best features:
 
-*   \ Criar um endpoint que lê um CSV e carrega dados para a base de usuários e publicações
-*   \ Refatorar algumas classes para tentar aplicar clean code
-*   \ Adicionar testes unitarios ao projeto
-*   \ Melhorar o read-me explicando como funciona a arquitetura básica desse projeto
+*  Criar um endpoint que lê um CSV e carrega dados para a base de usuários e publicações
+*  Refatorar algumas classes para tentar aplicar clean code
+*  Adicionar testes unitarios ao projeto
+*  Melhorar o read-me explicando como funciona a arquitetura básica desse projeto
 
 <h2>🛠️ Installation Steps:</h2>
 
