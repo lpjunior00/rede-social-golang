@@ -12,7 +12,7 @@ Here're some of the project's best features:
 *  Adicionar testes unitarios ao projeto
 *  Melhorar o read-me explicando como funciona a arquitetura básica desse projeto
 
-<h2>🛠️ Installation Steps:</h2>
+<h2>🛠️ Para executar o projeto:</h2>
 
 <p>1. Na raiz do projeto executar o comando</p>
 
@@ -21,7 +21,7 @@ docker-compose up
 ```
 
     
-<h2>💻 Built with</h2>
+<h2>💻 Construido com</h2>
 
 Technologies used in the project:
 
